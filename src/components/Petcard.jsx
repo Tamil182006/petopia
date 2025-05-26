@@ -7,31 +7,32 @@ export default function Petcard() {
       breed: "Labrador Retriever",
       age: 2,
       image: "src/assets/Images/Labrador.jpg",
-      price: "₹11999",
+      price: "₹11,999",
       description: "Friendly and outgoing, good with families.",
     },
     {
       id: 2,
       breed: "German Shepherd",
       age: 3,
-      image: "https://example.com/images/german-shepherd.jpg",
-      price: "₹15999",
+      image: "src/assets/Images/germanshepherd.jpg",
+      price: "₹15,999",
       description: "Loyal and intelligent, great for security.",
     },
     {
       id: 3,
       breed: "Pomarian",
       age: 3,
-      image: "https://example.com/images/german-shepherd.jpg",
-      price: "₹9499",
-      description: "Loyal and intelligent, great for security.",
-    },{
+      image: "src/assets/Images/pomarian.jpg",
+      price: "₹9,499",
+      description: "Small, energetic, and alert. Great companions.",
+    },
+    {
       id: 4,
       breed: "Pitbull",
       age: 3,
-      image: "https://example.com/images/german-shepherd.jpg",
-      price: "₹19999",
-      description: "Loyal and intelligent, great for security.",
+      image: "src/assets/Images/pitbull.jpg",
+      price: "₹19,999",
+      description: "Strong and loyal, needs experienced handling.",
     },
   ];
 
@@ -47,6 +48,7 @@ export default function Petcard() {
           </div>
           <div className="size">
             <h4>Age: {dog.age}</h4>
+            <p>{dog.description}</p>
           </div>
           <div className="action">
             <div className="price">

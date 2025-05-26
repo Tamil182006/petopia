@@ -207,4 +207,16 @@ nav .search-icon{
     font-size: 16px;
   }
 }
-
+.cart-count-badge {
+  background-color: red;
+  color: white;
+  border-radius: 50%;
+  padding: 2px 7px;
+  font-size: 12px;
+  font-weight: bold;
+  margin-left: 6px;
+  vertical-align: top;
+  display: inline-block;
+  min-width: 18px;
+  text-align: center;
+}

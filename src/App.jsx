@@ -2,15 +2,23 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import SignUp from './Pages/SignUp';
 import Landingpage from './Pages/Landingpage';
 import Mainpage from "./Pages/Mainpage";  
+import Petdetail from "./components/Petdetai";
+import Cartpage from './Pages/Cartpage';
+
+import { CartProvider } from './components/cartContext';  // <-- import CartProvider
 
 export default function App() {
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<Landingpage />} />
-        <Route path="/signup" element={<SignUp />} />
-        <Route path="/mainpage" element={<Mainpage />} /> 
-      </Routes>
-    </Router>
+    <CartProvider>        {/* <-- Wrap with CartProvider */}
+      <Router>
+        <Routes>
+          <Route path="/" element={<Landingpage />} />
+          <Route path="/signup" element={<SignUp />} />
+          <Route path="/mainpage" element={<Mainpage />} /> 
+          <Route path="/pet/:id" element={<Petdetail />} />
+          <Route path="/cart" element={<Cartpage />} />
+        </Routes>
+      </Router>
+    </CartProvider>
   );
 }

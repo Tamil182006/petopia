@@ -6,7 +6,7 @@ import "../Styles/SignUp.css";
 export default function SignUp() {
   const navigate = useNavigate();
 
-  // ✅ Create states for form fields
+
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -26,7 +26,7 @@ export default function SignUp() {
       return;
     }
 
-    // ✅ Redirect to home
+
     navigate("/mainpage");
   };
 

@@ -1,6 +1,13 @@
+import { useContext } from "react";
+import { CartContext } from "../components/cartContext"
 import "../Styles/NavbarSearch.css";
+import { Link } from 'react-router-dom';
 
 export default function NavbarSearch() {
+  const { cartItems } = useContext(CartContext);
+
+  const cartCount = cartItems.length;
+
   return (
     <div>
       <nav>
@@ -8,7 +15,7 @@ export default function NavbarSearch() {
           <span className="fas fa-bars" />
         </div>
         <div className="logo">Petopia</div>
-        <div className="nav-items">
+        <ul className="nav-items">
           <li>
             <a href="#">Home</a>
           </li>
@@ -24,7 +31,15 @@ export default function NavbarSearch() {
           <li>
             <a href="#">Contact</a>
           </li>
-        </div>
+              <li>
+          <Link to="/cart">
+            Cart 🛒
+            {cartCount > 0 && (
+              <span className="cart-count-badge">{cartCount}</span>
+            )}
+          </Link>
+        </li>
+        </ul>
         <div className="search-icon">
           <span className="fas fa-search" />
         </div>
