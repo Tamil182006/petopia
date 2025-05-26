@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { CartContext } from "../components/cartContext";
 import "../Styles/cartPage.css";
+import Checkout from "./Checkout";
 
 export default function Cartpage() {
   const { cartItems, removeFromCart, updateQuantity } = useContext(CartContext);
@@ -51,7 +52,7 @@ export default function Cartpage() {
 
       <div className="cart-summary">
         <h2>Total: ₹{totalPrice}</h2>
-        <button className="checkout-btn">Checkout</button>
+        <button className="checkout-btn" onClick={() => navigate("/checkout", { state: pet })}>Checkout</button>
       </div>
     </div>
   );

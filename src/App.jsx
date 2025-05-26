@@ -4,6 +4,7 @@ import Landingpage from './Pages/Landingpage';
 import Mainpage from "./Pages/Mainpage";  
 import Petdetail from "./components/Petdetai";
 import Cartpage from './Pages/Cartpage';
+import Checkout from "./Pages/Checkout";
 
 import { CartProvider } from './components/cartContext';  // <-- import CartProvider
 
@@ -17,6 +18,7 @@ export default function App() {
           <Route path="/mainpage" element={<Mainpage />} /> 
           <Route path="/pet/:id" element={<Petdetail />} />
           <Route path="/cart" element={<Cartpage />} />
+          <Route path="/checkout" element={< Checkout/>} />
         </Routes>
       </Router>
     </CartProvider>
