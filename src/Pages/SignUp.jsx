@@ -1,19 +1,18 @@
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import "bootstrap/dist/css/bootstrap.min.css";
 import "../Styles/SignUp.css";
 
 export default function SignUp() {
   const navigate = useNavigate();
 
-
-  const [username, setUsername] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
   const [agreed, setAgreed] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (!username || !email || !password || !confirmPassword || !agreed) {
@@ -26,8 +25,30 @@ export default function SignUp() {
       return;
     }
 
+    try {
+      // Send POST request to backend API
+      const response = await fetch("http://localhost:5000/api/signup", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ username, email, password }),
+      });
 
-    navigate("/mainpage");
+      const data = await response.json();
+
+      if (response.ok) {
+        // Signup successful
+        alert("Signup successful!");
+        navigate("/mainpage"); // Redirect user after successful signup
+      } else {
+        // Show backend error message
+        alert(data.message || "Signup failed");
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      alert("An error occurred while signing up.");
+    }
   };
 
   return (
@@ -98,18 +119,22 @@ export default function SignUp() {
               />
               <label className="form-check-label" htmlFor="terms">
                 I agree to the{" "}
-                <a href="#" className="text-primary">terms and conditions</a>
+                <a href="#" className="text-primary">
+                  terms and conditions
+                </a>
               </label>
             </div>
 
-            <button type="submit" className="btn btn-custom w-100">
+            <button type="submit" className="btn btn-custom">
               Register
             </button>
           </form>
 
           <div className="text-muted">
             Already have an account?{" "}
-            <a href="#" className="text-primary">Sign In</a>
+            <a href="#" className="text-primary">
+              Sign In
+            </a>
           </div>
         </div>
       </div>
