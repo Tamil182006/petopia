@@ -44,7 +44,7 @@ export default function SignUp() {
       if (response.ok) {
         // Signup successful
         alert("Signup successful!");
-        navigate("/mainpage"); // Redirect user after successful signup
+        navigate("/login"); // Redirect user after successful signup
       } else {
         // Show backend error message
         alert(data.message || "Signup failed");

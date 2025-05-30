@@ -55,6 +55,7 @@ export default function NavbarSearch() {
           />
           <button type="submit" className="fas fa-search" />
         </form>
+        <div className="small-circle"></div>
       </nav>
     </div>
   );
