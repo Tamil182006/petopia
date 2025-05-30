@@ -7,6 +7,9 @@ export default function Navbar() {
   const handleSignup = () => {
     navigate("/signup");
   };
+  const handlelogin = () => {
+    navigate("/login");
+  }
 
   return (
     <nav className="navbar">
@@ -19,7 +22,7 @@ export default function Navbar() {
           <li><a href="#food">Food</a></li>
           <li><a href="#medicines">Medicines</a></li>
           <li><a href="#cart">Cart 🛒</a></li>
-          <button className='log' >Login</button>
+          <button className='log' onClick={handlelogin}>Login</button>
           <button className='log' onClick={handleSignup}>Sign Up</button>
         </ul>
       </div>

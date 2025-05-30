@@ -6,6 +6,10 @@ import "../Styles/SignUp.css";
 export default function SignUp() {
   const navigate = useNavigate();
 
+  const handlelogin = (e) =>{
+    e.preventDefault();
+    navigate("/login");
+  }
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -132,7 +136,7 @@ export default function SignUp() {
 
           <div className="text-muted">
             Already have an account?{" "}
-            <a href="#" className="text-primary">
+            <a href="#" className="text-primary" onClick={handlelogin}>
               Sign In
             </a>
           </div>
