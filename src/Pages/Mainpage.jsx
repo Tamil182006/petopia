@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import NavbarSearch from "../components/NavbarSearch";
 import {pets} from "../productsData.js";
+
 import "../Styles/Mainpage.css"
 
 export default function Mainpage() {
@@ -23,6 +24,7 @@ export default function Mainpage() {
           </div>
         ))}
       </div>
+
     </div>
 
     </div>

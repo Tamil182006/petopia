@@ -23,7 +23,7 @@ export default function NavbarSearch() {
             <a href="#">Home</a>
           </li>
           <li>
-            <a href="#">Toys/Accessories</a>
+            <Link to="/toypage">Toys</Link>
           </li>
           <li>
             <a href="#">Medicine</a>
@@ -58,7 +58,7 @@ export default function NavbarSearch() {
           />
           <button type="submit" className="fas fa-search" />
         </form>
-        <div className="small-circle">{firstLetter}</div>
+        <div className="small-circle" role="button">{firstLetter}</div>
       </nav>
     </div>
   );
