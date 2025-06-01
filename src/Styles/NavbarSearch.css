@@ -116,4 +116,13 @@ nav form button:hover {
   background-color: #26d63b;
   border-radius: 50%;
   margin-left: 10px;
+
+  display: flex;           /* enable flexbox */
+  align-items: center;     /* vertical center */
+  justify-content: center; /* horizontal center */
+
+  color: white;            /* text color */
+  font-weight: 700;        /* make text bold */
+  font-size: 18px;         /* increase font size */
+  user-select: none;       /* optional: prevent text selection */
 }

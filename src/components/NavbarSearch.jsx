@@ -7,6 +7,9 @@ export default function NavbarSearch() {
   const { cartItems } = useContext(CartContext);
 
   const cartCount = cartItems.length;
+   const user = JSON.parse(localStorage.getItem("user"));
+  const firstLetter = user ? user.username.charAt(0).toUpperCase() : "";
+
 
   return (
     <div>
@@ -55,7 +58,7 @@ export default function NavbarSearch() {
           />
           <button type="submit" className="fas fa-search" />
         </form>
-        <div className="small-circle"></div>
+        <div className="small-circle">{firstLetter}</div>
       </nav>
     </div>
   );

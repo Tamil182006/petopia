@@ -25,9 +25,8 @@ export default function Login() {
       const data = await response.json();
 
       if (response.ok) {
-        alert(data.message); // Login successful
-        // Optionally save user info in localStorage or context here
-        // e.g., localStorage.setItem('user', JSON.stringify(data.user));
+        alert(data.message); 
+        localStorage.setItem("user", JSON.stringify(data.user));
         navigate("/mainpage");
       } else {
         alert(data.message || "Login failed");
