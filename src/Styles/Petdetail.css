@@ -1,0 +1,101 @@
+.pet-detail-container {
+  display: flex;
+  gap: 40px;
+  padding: 20px;
+  height: 100vh; /* full viewport height */
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+/* Left Section - Image & Buttons */
+.pet-image-section {
+  flex: 1;
+  position: sticky;
+  top: 20px;
+  align-self: flex-start;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-height: calc(100vh - 40px);
+}
+
+.pet-image {
+  width: 100%;
+  max-width: 450px;
+  border-radius: 10px;
+  object-fit: cover;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.pet-buttons {
+  margin-top: 20px;
+  display: flex;
+  gap: 15px;
+}
+
+.btn {
+  padding: 15px 30px;
+  font-size: 18px;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.add-cart {
+  background-color: orange;
+  color: white;
+}
+
+.buy-now {
+  background-color: green;
+  color: white;
+}
+
+/* Right Section - Pet Info */
+.pet-info-section {
+  flex: 2;
+  max-height: 100vh;
+  overflow-y: auto;
+  padding-right: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Typography & Lists */
+.pet-name {
+  font-size: 32px;
+  font-weight: bold;
+}
+
+.pet-description {
+  font-size: 18px;
+  color: #555;
+}
+
+.pet-details-list,
+.pet-diet-section ul,
+.pet-care-section ul,
+.pet-inclusions-section ul {
+  margin-left: 20px;
+  list-style: disc;
+  font-size: 16px;
+  color: #333;
+}
+
+.pet-price-section {
+  font-size: 24px;
+  margin-top: 10px;
+}
+
+.price {
+  color: green;
+  font-weight: bold;
+}
+
+.original-price {
+  text-decoration: line-through;
+  color: gray;
+  margin-left: 15px;
+}

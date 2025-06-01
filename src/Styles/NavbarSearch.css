@@ -1,0 +1,119 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  outline: none;
+  box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
+}
+
+body {
+  background: #d0cfcf;
+  background-image: url(images/bg-2.jpg);
+  background-size: cover;
+  background-position: center;
+  min-height: 450px;
+  height: 100vh; 
+}
+
+nav {
+  background: #171c24;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  height: 70px;
+  padding: 0 100px;
+}
+
+nav .logo {
+  color: #fff;
+  font-size: 30px;
+  font-weight: 600;
+  letter-spacing: -1px;
+}
+
+nav .nav-items {
+  display: flex;
+  flex: 1;
+  padding-left: 40px;
+}
+
+nav .nav-items li {
+  list-style: none;
+  padding: 0 15px;
+}
+
+nav .nav-items li a {
+  color: #fff;
+  font-size: 18px;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+nav .nav-items li a:hover {
+  color: #26d63b;
+}
+
+nav form {
+  display: flex;
+  height: 40px;
+  padding: 2px;
+  background: #1e232b;
+  min-width: 18% !important; 
+  border: 1px solid rgba(155,155,155,0.2);
+  border-radius: 36px;
+  align-items: center;
+}
+
+nav form .search-data {
+  width: 100%;
+  height: 100%;
+  padding: 0 10px;
+  color: #fff;
+  font-size: 17px;
+  border: none;
+  font-weight: 500;
+  background: none;
+}
+
+nav form button {
+  padding: 0 15px;
+  color: #fff;
+  font-size: 17px;
+  background: #26d63b;
+  border: none;
+  border-radius: 2px;
+  border-top-right-radius: 12px;
+  border-bottom-right-radius: 12px;
+  cursor: pointer;
+  transition: 0.2s all;
+}
+
+nav form button:hover {
+  background: #2b9638;
+}
+
+/* Cart count badge */
+.cart-count-badge {
+  background-color: red;
+  color: white;
+  border-radius: 50%;
+  padding: 2px 7px;
+  font-size: 12px;
+  font-weight: bold;
+  margin-left: 6px;
+  vertical-align: top;
+  display: inline-block;
+  min-width: 18px;
+  text-align: center;
+}
+
+.small-circle {
+  width: 35px;
+  height: 35px;
+  background-color: #26d63b;
+  border-radius: 50%;
+  margin-left: 10px;
+}
