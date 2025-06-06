@@ -6,7 +6,7 @@ import Checkout from "../Pages/Checkout";
 
 export default function Cartpage() {
   const { cartItems, removeFromCart, updateQuantity } = useContext(CartContext);
-  const navigate = useNavigate(); // ✅ you missed this line
+  const navigate = useNavigate(); 
 
   const totalPrice = cartItems.reduce(
     (sum, item) => sum + item.price * item.quantity,

@@ -24,6 +24,9 @@ mongoose.connection.once('open', () => {
 const authRoutes = require('./routes/auth');
 app.use('/api', authRoutes);
 
+const orderRoutes = require("./routes/orderRoute");
+app.use('/api/orders', orderRoutes);
+
 // Start server
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {

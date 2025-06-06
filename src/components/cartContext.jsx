@@ -12,23 +12,23 @@ export function CartProvider({ children }) {
     localStorage.setItem("petopia_cart", JSON.stringify(cartItems));
   }, [cartItems]);
 
- function addToCart(pet) {
-  setCartItems(prevItems => {
-    const exists = prevItems.find(
-      item => item.id === pet.id && item.type === pet.type
-    );
-
-    if (exists) {
-      return prevItems.map(item =>
-        item.id === pet.id && item.type === pet.type
-          ? { ...item, quantity: item.quantity + 1 }
-          : item
+  function addToCart(pet) {
+    setCartItems(prevItems => {
+      const exists = prevItems.find(
+        item => item.id === pet.id && item.type === pet.type
       );
-    } else {
-      return [...prevItems, { ...pet, quantity: 1 }];
-    }
-  });
-}
+
+      if (exists) {
+        return prevItems.map(item =>
+          item.id === pet.id && item.type === pet.type
+            ? { ...item, quantity: item.quantity + 1 }
+            : item
+        );
+      } else {
+        return [...prevItems, { ...pet, quantity: 1 }];
+      }
+    });
+  }
 
   function removeFromCart(petId) {
     setCartItems(prevItems => prevItems.filter(item => item.id !== petId));
@@ -42,11 +42,23 @@ export function CartProvider({ children }) {
     );
   }
 
+  function clearCart() {
+    setCartItems([]);
+  }
+
   const cartCount = cartItems.reduce((sum, item) => sum + item.quantity, 0);
 
   return (
     <CartContext.Provider
-      value={{ cartItems, addToCart, removeFromCart, updateQuantity, cartCount }}
+      value={{
+        cartItems,
+        setCartItems,   // Expose this so components like Checkout can use it
+        addToCart,
+        removeFromCart,
+        updateQuantity,
+        clearCart,      // Optional but convenient for clearing cart
+        cartCount,
+      }}
     >
       {children}
     </CartContext.Provider>
