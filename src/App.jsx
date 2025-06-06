@@ -8,6 +8,7 @@ import Cartpage from './Pages/Cartpage';
 import Checkout from "./Pages/Checkout";
 import ToyPage from "./Pages/ToyPage";
 
+
 import { CartProvider } from './components/cartContext';  // <-- import CartProvider
 
 export default function App() {
@@ -23,6 +24,7 @@ export default function App() {
           <Route path="/cart" element={<Cartpage />} />
           <Route path="/checkout" element={< Checkout/>} />
           <Route path="/toypage" element={<ToyPage/>} />
+          <Route path="/home" element={<Mainpage/>}></Route>
         </Routes>
       </Router>
     </CartProvider>

@@ -20,7 +20,7 @@ export default function NavbarSearch() {
         <div className="logo">Petopia</div>
         <ul className="nav-items">
           <li>
-            <a href="#">Home</a>
+           <Link to="/home">Home</Link>
           </li>
           <li>
             <Link to="/toypage">Toys</Link>

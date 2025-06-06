@@ -1,10 +1,12 @@
 import { useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import { CartContext } from "../components/cartContext";
 import "../Styles/cartPage.css";
-import Checkout from "./Checkout";
+import Checkout from "../Pages/Checkout";
 
 export default function Cartpage() {
   const { cartItems, removeFromCart, updateQuantity } = useContext(CartContext);
+  const navigate = useNavigate(); // ✅ you missed this line
 
   const totalPrice = cartItems.reduce(
     (sum, item) => sum + item.price * item.quantity,
@@ -52,7 +54,9 @@ export default function Cartpage() {
 
       <div className="cart-summary">
         <h2>Total: ₹{totalPrice}</h2>
-        <button className="checkout-btn" onClick={() => navigate("/checkout", { state: pet })}>Checkout</button>
+        <button className="checkout-btn" onClick={() => navigate("/checkout")}>
+          Checkout
+        </button>
       </div>
     </div>
   );

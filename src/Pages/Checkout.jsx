@@ -1,101 +1,89 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { useLocation } from "react-router-dom";
+import { CartContext } from "../components/cartContext";
 import "../Styles/Checkout.css";
 
 export default function Checkout() {
   const location = useLocation();
   const pet = location.state;
+  const { cartItems } = useContext(CartContext);
 
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [pincode, setPincode] = useState("");
   const [address, setAddress] = useState("");
-  const [quantity, setQuantity] = useState(1);
+
+  const displayItems = pet ? [{ ...pet, quantity: 1 }] : cartItems;
+  const totalAmount = displayItems.reduce((sum, item) => sum + item.price * item.quantity, 0);
 
   return (
-    <div>
-      <div className="maincontainer2">
-        <div className="delivery">
-          <form action="delivery">
-            <label htmlFor="name">Full Name:</label>
-            <input
-              type="text"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-            />
+    <div className="maincontainer2">
+      <div className="delivery">
+        <form>
+          <label>Full Name:</label>
+          <input type="text" value={name} onChange={(e) => setName(e.target.value)} />
 
-            <label htmlFor="number">Phone number:</label>
-            <input
-              type="text"
-              value={phone}
-              onChange={(e) => setPhone(e.target.value)}
-            />
+          <label>Phone number:</label>
+          <input type="text" value={phone} onChange={(e) => setPhone(e.target.value)} />
 
-            <label htmlFor="pincode">Pincode</label>
-            <input
-              type="text"
-              value={pincode}
-              onChange={(e) => setPincode(e.target.value)}
-            />
+          <label>Pincode</label>
+          <input type="text" value={pincode} onChange={(e) => setPincode(e.target.value)} />
 
-            <label htmlFor="state">State & City</label>
-            <input type="text" />
-            <label htmlFor="address">Address:</label>
-            <input
-              type="text"
-              value={address}
-              onChange={(e) => setAddress(e.target.value)}
-            />
-          </form>
-        </div>
-        <div className="imagearea">
-          <img src={pet.image} alt={pet.name} />
-        </div>
-        <div className="petdetails">
-          <h4>{pet.name}</h4>
-          <ul>
-            <li>Age:{pet.age}</li>
-            <li>Weight: {pet.weight}</li>
-            <li>Vaccinated: {pet.vaccinated}</li>
-            <li>Breed type: {pet.breedType}</li>
-          </ul>
-        </div>
-        <div className="orderdetails">
-          <ul>
-            <li>
-              Quantity:{quantity}{" "}
-              <span>
-                <button
-                  type="button"
-                  onClick={() => setQuantity((prev) => Math.max(1, prev - 1))}
-                >
-                  -
-                </button>
-                <button
-                  type="button"
-                  onClick={() => setQuantity((prev) => prev + 1)}
-                >
-                  +
-                </button>
-              </span>{" "}
+          <label>State & City</label>
+          <input type="text" />
+
+          <label>Address:</label>
+          <input type="text" value={address} onChange={(e) => setAddress(e.target.value)} />
+        </form>
+      </div>
+
+      <div className="imagearea">
+        {displayItems.map((item) => (
+          <img key={item.id} src={item.image} alt={item.name} style={{ width: "100px", margin: "10px" }} />
+        ))}
+      </div>
+
+      <div className="petdetails">
+        {displayItems.map((item) => (
+          <div key={item.id}>
+            <h4>{item.name}</h4>
+            {item.age && <ul>
+              <li>Age: {item.age}</li>
+              <li>Weight: {item.weight}</li>
+              <li>Vaccinated: {item.vaccinated}</li>
+              <li>Breed Type: {item.breedType}</li>
+            </ul>}
+          </div>
+        ))}
+      </div>
+
+      <div className="orderdetails">
+        <ul>
+          {displayItems.map((item) => (
+            <li key={item.id}>
+              {item.name} - ₹{item.price} × {item.quantity}
             </li>
-            <li>Price: {pet.price.toLocaleString()}</li>
-            <li>
-              Delivery details:
-              <ul>
-                <li>Name:{name}</li>
-                <li>Phne : {phone}</li>
-                <li>Address: {address}</li>
-                <li>Pincode:{pincode}</li>
-              </ul>
-            </li>
-          </ul>
-          <button
-            onClick={() => alert(`Order placed for ${quantity} x ${pet.name}`)}
-          >
-            Confirm order
-          </button>
-        </div>
+          ))}
+          <li>
+            <strong>Total: ₹{totalAmount}</strong>
+          </li>
+          <li>
+            Delivery Details:
+            <ul>
+              <li>Name: {name}</li>
+              <li>Phone: {phone}</li>
+              <li>Address: {address}</li>
+              <li>Pincode: {pincode}</li>
+            </ul>
+          </li>
+        </ul>
+        <button
+          onClick={() =>
+            alert(`Order placed for ₹${totalAmount.toLocaleString()} for ${displayItems.length} item(s)`)
+          }
+        >
+          Confirm Order
+        </button>
       </div>
     </div>
   );
