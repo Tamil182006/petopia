@@ -117,12 +117,39 @@ nav form button:hover {
   border-radius: 50%;
   margin-left: 10px;
 
-  display: flex;           /* enable flexbox */
-  align-items: center;     /* vertical center */
-  justify-content: center; /* horizontal center */
+  display: flex;           
+  align-items: center;     
+  justify-content: center; 
 
-  color: white;            /* text color */
-  font-weight: 700;        /* make text bold */
-  font-size: 18px;         /* increase font size */
-  user-select: none;       /* optional: prevent text selection */
+  color: white;            
+  font-weight: 700;      
+  font-size: 18px;         
+  user-select: none;      
+}
+.dropdown-menu {
+  position: absolute;
+  top: 60px;
+  right: 20px;
+  background-color: white;
+  border: 1px solid #ccc;
+  box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
+  padding: 10px;
+  z-index: 999;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+}
+
+.dropdown-menu button {
+  background: none;
+  border: none;
+  padding: 10px;
+  text-align: left;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background 0.2s;
+}
+
+.dropdown-menu button:hover {
+  background-color: #f2f2f2;
 }

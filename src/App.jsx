@@ -7,6 +7,7 @@ import Petdetail from "./components/Petdetai";
 import Cartpage from './Pages/Cartpage';
 import Checkout from "./Pages/Checkout";
 import ToyPage from "./Pages/ToyPage";
+import MyOrder from "./Pages/MyOrder";
 
 
 import { CartProvider } from './components/cartContext';  // <-- import CartProvider
@@ -25,6 +26,7 @@ export default function App() {
           <Route path="/checkout" element={< Checkout/>} />
           <Route path="/toypage" element={<ToyPage/>} />
           <Route path="/home" element={<Mainpage/>}></Route>
+          <Route path="/myorder" element={<MyOrder/>}></Route>
         </Routes>
       </Router>
     </CartProvider>
