@@ -1,7 +1,7 @@
 import { useContext, useState } from "react";
 import { CartContext } from "../components/cartContext";
 import "../Styles/NavbarSearch.css";
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from "react-router-dom";
 
 export default function NavbarSearch() {
   const { cartItems } = useContext(CartContext);
@@ -16,6 +16,9 @@ export default function NavbarSearch() {
   const handleMyOrders = () => {
     setShowDropdown(false);
     navigate("/myorder");
+  };
+  const handlelogout = () => {
+    navigate("/login");
   };
 
   return (
@@ -67,7 +70,10 @@ export default function NavbarSearch() {
         </form>
 
         {/* Profile circle and dropdown container */}
-        <div className="profile-dropdown-wrapper" style={{ position: 'relative', display: 'inline-block' }}>
+        <div
+          className="profile-dropdown-wrapper"
+          style={{ position: "relative", display: "inline-block" }}
+        >
           <div
             className="small-circle"
             role="button"
@@ -81,7 +87,7 @@ export default function NavbarSearch() {
           {showDropdown && (
             <div className="dropdown-menu">
               <button onClick={handleMyOrders}>My Orders</button>
-              
+              <button onclick={handlelogout}>Logout</button>
             </div>
           )}
         </div>
