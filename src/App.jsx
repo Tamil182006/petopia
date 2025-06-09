@@ -8,6 +8,7 @@ import Cartpage from './Pages/Cartpage';
 import Checkout from "./Pages/Checkout";
 import ToyPage from "./Pages/ToyPage";
 import MyOrder from "./Pages/MyOrder";
+import Medicine from "./Pages/Medicine";
 
 
 import { CartProvider } from './components/cartContext';  // <-- import CartProvider
@@ -27,6 +28,7 @@ export default function App() {
           <Route path="/toypage" element={<ToyPage/>} />
           <Route path="/home" element={<Mainpage/>}></Route>
           <Route path="/myorder" element={<MyOrder/>}></Route>
+          <Route path="/medicine" element={<Medicine/>}></Route>
         </Routes>
       </Router>
     </CartProvider>

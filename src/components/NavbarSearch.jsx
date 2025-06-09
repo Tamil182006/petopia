@@ -17,7 +17,7 @@ export default function NavbarSearch() {
     setShowDropdown(false);
     navigate("/myorder");
   };
-  const handlelogout = () => {
+  const handlelogout1 = () => {
     navigate("/login");
   };
 
@@ -36,7 +36,7 @@ export default function NavbarSearch() {
             <Link to="/toypage">Toys</Link>
           </li>
           <li>
-            <a href="#">Medicine</a>
+            <Link to="/medicine">Medicines</Link>
           </li>
           <li>
             <a href="#">Value Packs</a>
@@ -87,7 +87,7 @@ export default function NavbarSearch() {
           {showDropdown && (
             <div className="dropdown-menu">
               <button onClick={handleMyOrders}>My Orders</button>
-              <button onclick={handlelogout}>Logout</button>
+              <button onclick={handlelogout1}>Logout</button>
             </div>
           )}
         </div>
