@@ -6,15 +6,17 @@ import "../Styles/SignUp.css";
 export default function SignUp() {
   const navigate = useNavigate();
 
-  const handlelogin = (e) =>{
+  const handlelogin = (e) => {
     e.preventDefault();
     navigate("/login");
-  }
+  };
+
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [agreed, setAgreed] = useState(false);
+  const [isSeller, setIsSeller] = useState(false); // NEW: seller checkbox
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -29,29 +31,38 @@ export default function SignUp() {
       return;
     }
 
-    try {
-      // Send POST request to backend API
-      const response = await fetch("http://localhost:5000/api/signup", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
+    if (isSeller) {
+      // Redirect to SellerSignup page with basic info if needed
+      navigate("/sellersignup", {
+        state: {
+          username,
+          email,
+          password,
         },
-        body: JSON.stringify({ username, email, password }),
       });
+    } else {
+      // Normal user signup
+      try {
+        const response = await fetch("http://localhost:5000/api/signup", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ username, email, password }),
+        });
 
-      const data = await response.json();
+        const data = await response.json();
 
-      if (response.ok) {
-        // Signup successful
-        alert("Signup successful!");
-        navigate("/login"); // Redirect user after successful signup
-      } else {
-        // Show backend error message
-        alert(data.message || "Signup failed");
+        if (response.ok) {
+          alert("Signup successful!");
+          navigate("/login");
+        } else {
+          alert(data.message || "Signup failed");
+        }
+      } catch (error) {
+        console.error("Error:", error);
+        alert("An error occurred while signing up.");
       }
-    } catch (error) {
-      console.error("Error:", error);
-      alert("An error occurred while signing up.");
     }
   };
 
@@ -110,6 +121,20 @@ export default function SignUp() {
                 onChange={(e) => setConfirmPassword(e.target.value)}
                 required
               />
+            </div>
+
+            {/* Seller Option */}
+            <div className="mb-3 form-check">
+              <input
+                type="checkbox"
+                className="form-check-input"
+                id="isSeller"
+                checked={isSeller}
+                onChange={(e) => setIsSeller(e.target.checked)}
+              />
+              <label className="form-check-label" htmlFor="isSeller">
+                I want to sign up as a <strong>Seller</strong>
+              </label>
             </div>
 
             <div className="mb-3 form-check">
