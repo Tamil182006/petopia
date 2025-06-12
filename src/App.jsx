@@ -10,7 +10,7 @@ import ToyPage from "./Pages/ToyPage";
 import MyOrder from "./Pages/MyOrder";
 import Medicine from "./Pages/Medicine";
 import SellerSignup from "./Pages/SellerSingup";
-import sellerDashboard from './Pages/sellerDashboard';
+import SellerPage from "./Pages/SellerPage";
 
 import { CartProvider } from './components/cartContext';  // <-- import CartProvider
 
@@ -31,7 +31,7 @@ export default function App() {
           <Route path="/myorder" element={<MyOrder/>}></Route>
           <Route path="/medicine" element={<Medicine/>}></Route>
           <Route path="/sellersignup" element={<SellerSignup/>}></Route>
-          <Route path="/sellerdashboard" element={<sellerDashboard />} />
+          <Route path="/sellerdashboard" element={<SellerPage />} />
         </Routes>
       </Router>
     </CartProvider>
