@@ -2,6 +2,7 @@
 const express = require("express");
 const router = express.Router();
 const Seller = require("../models/Seller");
+const Pet = require("../models/Pet");
 
 router.post("/signup", async (req, res) => {
   try {
@@ -31,6 +32,29 @@ router.post('/login', async (req, res) => {
   } catch (error) {
     console.error('Error during seller login:', error);
     res.status(500).json({ message: 'Login failed' });
+  }
+});
+
+router.post("/listpet", async (req, res) => {
+  try {
+    const { name, breed, age, price, description, imageUrl, category, sellerId } = req.body;
+
+    const newPet = new Pet({
+      name,
+      breed,
+      age,
+      price,
+      description,
+      imageUrl,
+      category,
+      sellerId, // Optional: Pass sellerId if needed
+    });
+
+    await newPet.save();
+    res.status(201).json({ message: "Pet listed successfully", pet: newPet });
+  } catch (err) {
+    console.error("Error listing pet:", err);
+    res.status(500).json({ message: "Failed to list pet" });
   }
 });
 
