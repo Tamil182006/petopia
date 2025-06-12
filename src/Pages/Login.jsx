@@ -6,7 +6,7 @@ export default function Login() {
   const navigate = useNavigate();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [isSeller, setIsSeller] = useState(false); // 🔥 Add this toggle
+  const [isSeller, setIsSeller] = useState(false);
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -17,8 +17,8 @@ export default function Login() {
     }
 
     const url = isSeller
-      ? "http://localhost:5000/api/seller/login" // 👈 seller login route
-      : "http://localhost:5000/api/login"; // 👈 user login route
+      ? "http://localhost:5000/api/seller/login" 
+      : "http://localhost:5000/api/login";
 
     try {
       const response = await fetch(url, {
