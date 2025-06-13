@@ -19,8 +19,8 @@ export default function ProductCard({ item, type }) {
   };
 
   return (
-    <div className="product-card" onClick={() => navigate(`/${type}/${item.id}`)}>
-      <img src={item.image} alt={item.name || item.breed} className="product-image" />
+    <div className="product-card" onClick={() => navigate(`/${type}/${item._id}`)}>
+      <img src={item.imageUrl} alt={item.name || item.breed} className="product-image" />
       <h3>{item.name || item.breed}</h3>
       <p>{item.description}</p>
       <p className="price">

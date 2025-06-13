@@ -122,8 +122,6 @@ export default function SignUp() {
                 required
               />
             </div>
-
-            {/* Seller Option */}
             <div className="mb-3 form-check">
               <input
                 type="checkbox"

@@ -1,21 +1,31 @@
 import { useNavigate } from "react-router-dom";
-import { useContext, useMemo } from "react";
+import { useContext, useEffect, useState } from "react";
 import { CartContext } from "../components/cartContext";
 import NavbarSearch from "../components/NavbarSearch";
-import { pets } from "../productsData";
-
 import "../Styles/Mainpage.css";
 
 export default function Mainpage() {
   const navigate = useNavigate();
   const { addToCart } = useContext(CartContext);
+  const [pets, setPets] = useState([]);
 
-  // Since pets already contains both dogs and cats, just shuffle pets array
-  const shuffledPets = useMemo(() => {
-    return pets
-      .map((pet) => ({ pet, sort: Math.random() }))
-      .sort((a, b) => a.sort - b.sort)
-      .map(({ pet }) => pet);
+  useEffect(() => {
+    const fetchPets = async () => {
+      try {
+       const res = await fetch("http://localhost:5000/api/seller/pets");
+
+        const data = await res.json();
+        if (res.ok) {
+          setPets(data.pets);
+        } else {
+          console.error(data.message || "Failed to fetch pets");
+        }
+      } catch (err) {
+        console.error("Error fetching pets:", err);
+      }
+    };
+
+    fetchPets();
   }, []);
 
   return (
@@ -25,25 +35,30 @@ export default function Mainpage() {
         <h2 className="section-title">Available Pets</h2>
 
         <div className="product-grid">
-          {shuffledPets.map((pet) => (
+          {pets.map((pet) => (
             <div
-              key={pet.id}
+              key={pet._id}
               className="product-card"
-              onClick={() => navigate(`/pet/${pet.id}`)}
+              onClick={() => navigate(`/pet/${pet._id}`)}
             >
-              <img src={pet.image} alt={pet.name} className="product-image" />
+              <img
+                src={pet.imageUrl}
+                alt={pet.name}
+                className="product-image"
+              />
               <h5>{pet.name}</h5>
               <p>{pet.description}</p>
-              {/* Handle price as string or number gracefully */}
               <p className="price">
-                {typeof pet.price === "number" ? `₹${pet.price.toLocaleString()}` : pet.price}
+                {typeof pet.price === "number"
+                  ? `₹${pet.price.toLocaleString()}`
+                  : pet.price}
               </p>
 
               <div className="button-group">
                 <button
                   className="btn"
                   onClick={(e) => {
-                    e.stopPropagation(); // prevent parent click
+                    e.stopPropagation();
                     addToCart(pet);
                   }}
                 >

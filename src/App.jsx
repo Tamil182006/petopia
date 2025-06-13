@@ -32,6 +32,8 @@ export default function App() {
           <Route path="/medicine" element={<Medicine/>}></Route>
           <Route path="/sellersignup" element={<SellerSignup/>}></Route>
           <Route path="/sellerdashboard" element={<SellerPage />} />
+          <Route path="/pet/:id" element={<Petdetail />} />
+
         </Routes>
       </Router>
     </CartProvider>
