@@ -1,4 +1,5 @@
 import { useState } from "react";
+import SellerNavbar from "../components/SellerNavbar";
 import "../Styles/sellerDashboard.css";
 
 export default function SellerDashboard() {
@@ -109,6 +110,8 @@ export default function SellerDashboard() {
   };
 
   return (
+    <div>
+      <SellerNavbar/>
     <div className="dashboard-container">
       <div className="sidebar">
         <div className="box">
@@ -182,5 +185,6 @@ export default function SellerDashboard() {
         </div>
       )}
     </div>
+  </div>
   );
 }
