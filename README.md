@@ -1,12 +1,78 @@
-# React + Vite
+Petopia is a full-stack web application for pet lovers to buy pet products and adopt/rescue animals. Built using the MERN stack, Petopia empowers both buyers and sellers through a user-friendly interface and real-time pet listing capabilities.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+🧱 Tech Stack
+💻 Frontend
+React.js
 
-Currently, two official plugins are available:
+Axios
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+React Router
 
-## Expanding the ESLint configuration
+Context API (Cart management)
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+CSS Modules
+
+🔙 Backend
+Node.js
+
+Express.js
+
+MongoDB (with Mongoose)
+
+Multer (for file uploads)
+
+JWT (for login, in progress)
+
+📦 Features Implemented
+🛒 Buyer Flow
+👀 Landing page showing pets for sale
+
+🔍 Navbar with search bar and category filters (Dogs, Cats, Birds)
+
+🐶 Pet Detail Page with dynamic content from MongoDB
+
+🛍️ Add to Cart and Checkout Page
+
+📦 Orders stored in MongoDB with confirmation
+
+🧾 My Orders page to track purchases
+
+🧑‍💼 Seller Flow
+🧾 Multi-step Seller Signup Form (Coming soon: Email/OTP verification)
+
+📤 Seller Dashboard with:
+
+Product listing form (Step 1: Basic info, Step 2: Detailed info)
+
+Real-time product count fetched from MongoDB
+
+Each pet listing associated with sellerId
+
+🗃️ Seller-specific product view via MongoDB query
+
+🧠 Backend Logic
+MongoDB collections:
+
+users
+
+sellers
+
+pets
+
+orders
+
+Routes created:
+
+POST /api/auth/signup (users)
+
+POST /api/seller/signup (sellers)
+
+POST /api/seller/listpet
+
+PUT /api/seller/updatepet/:id
+
+GET /api/seller/pets
+
+GET /api/seller/petsbyseller/:email
+
+POST /api/orders
